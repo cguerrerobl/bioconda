@@ -13,33 +13,38 @@ source:
     - patches/gnuplot_mouse_clipboardformat.patch
 
 build:
-  number: 8
-  skip: False
+  number: 9
 
 requirements:
   build:
-    - perl # [not osx]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+  host:
+    - perl
+    - tcsh
+    - gnuplot
   run:
-    - perl # [not osx]
-    - libstdcxx-ng # [linux]
+    - perl
+    - gnuplot
 
 test:
   commands:
-    - "mummer -h &> /dev/null"
-    #- "delta-filter -h &> /dev/null"
-    #- "dnadiff -h &> /dev/null"
-    #- "mapview -h &> /dev/null"
-    - "mummerplot -h &> /dev/null"
-    - "nucmer -h &> /dev/null"
-    - "promer -h &> /dev/null"
-    - "show-aligns -h &> /dev/null"
-    #- "show-coords -h &> /dev/null"
-    #- "show-diff -h &> /dev/null"
-    #- "show-snps -h &> /dev/null"
-    #- "show-tiling -h &> /dev/null"
+    - mummer -h
+    - delta-filter -h
+    - dnadiff -h
+    - mapview -h
+    - mummerplot -h
+    - nucmer -h
+    - promer -h
+    - show-aligns -h
+    - show-coords -h
+    - show-diff -h
+    - show-snps -h
+    - show-tiling -h
 
 about:
-  home: 'http://mummer.sourceforge.net/'
+  home: http://mummer.sourceforge.net
   license: "The Artistic License"
   summary: "MUMmer is a system for rapidly aligning entire genomes"
 
