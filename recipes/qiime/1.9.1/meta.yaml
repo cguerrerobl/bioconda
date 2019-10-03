@@ -4,18 +4,19 @@ package:
 
 source:
   url: https://pypi.python.org/packages/source/q/qiime/qiime-1.9.1.tar.gz
-  md5: 32d4db2b2c888dbbfc6aa33f02725526
-  sha1: 2ab4ac9beb745ed3eca3243312cc9ce14e8a20d8
   sha256: c12dcdae1fe44762a49668276d7e93f487d87a0dc2ff8ca696ac0eff9d92a8a8
 
 build:
-  number: 2
+  number: 3
+  noarch: generic
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
     - python <3
+    - pip
     - setuptools
-    - numpy
+    - numpy 1.11
     - scipy >=0.14.0
     - cogent ==1.5.3
     - natsort <4.0.0
@@ -25,15 +26,13 @@ requirements:
     - biom-format >=2.1.4,<2.2.0
     - emperor >=0.9.51,<1.0.0
     - scikit-bio >=0.2.3,<0.3.0
-    - matplotlib <=1.9
+    - matplotlib <2
     - burrito-fillings >=0.1.1,<0.2.0
     - pandas >=0.13.1
     - burrito >=0.9.1,<1.0.0
     - qiime-default-reference >=0.1.2,<0.2.0
     - mock
     - nose
-    - xz
-
   run:
     - python <3
     - {{ pin_compatible('numpy') }}
@@ -46,20 +45,13 @@ requirements:
     - biom-format >=2.1.4,<2.2.0
     - emperor >=0.9.51,<1.0.0
     - scikit-bio >=0.2.3,<0.3.0
-    - matplotlib <=1.9
+    - matplotlib <2
     - burrito-fillings >=0.1.1,<0.2.0
     - pandas >=0.13.1
     - burrito >=0.9.1,<1.0.0
     - qiime-default-reference >=0.1.2,<0.2.0
     - mock
     - nose
-    - glib
-    - xorg-libxext
-    - xorg-libxdmcp
-    - xorg-libsm
-    - xorg-libxrender
-    - xorg-libxau
-    - xz
 
 test:
   # Python imports
@@ -68,7 +60,6 @@ test:
     - qiime.util
     - qiime.check_id_map
     - qiime.sort
-
   commands:
     - add_alpha_to_mapping_file.py -h
     - add_qiime_labels.py -h
@@ -231,6 +222,8 @@ test:
 about:
   home: http://www.qiime.org
   license: GNU General Public License v2 (GPLv2)
+  license_family: GPL
+  license_file: COPYING.txt
   summary: 'Quantitative Insights Into Microbial Ecology'
 
 extra:
