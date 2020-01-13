@@ -17,7 +17,7 @@ make plugins CC=${CC} CXX=${CXX} CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
 make CC=${CC} CXX=${CXX} CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
 
 # remove the sample data
-rm -rf $SRC_DIR/sample_data
+#rm -rf $SRC_DIR/sample_data
 
 # reproduce make install without the wrapper script
 mkdir -p $PREFIX/bin
@@ -56,8 +56,8 @@ find $TRINITY_HOME -type f -print0 | xargs -0 sed -i.bak 's/FindBin::Bin/FindBin
 # Replace hard coded path to deps
 find $TRINITY_HOME -type f -print0 | xargs -0 sed -i.bak 's/$JELLYFISH_DIR\/bin\/jellyfish/jellyfish/g'
 sed -i.bak "s/\$ROOTDIR\/trinity-plugins\/Trimmomatic/\/opt\/anaconda1anaconda2anaconda3\/share\/trimmomatic/g" $TRINITY_HOME/Trinity
-sed -i 's/my $TRIMMOMATIC = "\([^"]\+\)"/my $TRIMMOMATIC = '"'"'\1'"'"'/' $TRINITY_HOME/Trinity
-sed -i 's/my $TRIMMOMATIC_DIR = "\([^"]\+\)"/my $TRIMMOMATIC_DIR = '"'"'\1'"'"'/' $TRINITY_HOME/Trinity
+sed -i.bak 's/my $TRIMMOMATIC = "\([^"]\+\)"/my $TRIMMOMATIC = '"'"'\1'"'"'/' $TRINITY_HOME/Trinity
+sed -i.bak 's/my $TRIMMOMATIC_DIR = "\([^"]\+\)"/my $TRIMMOMATIC_DIR = '"'"'\1'"'"'/' $TRINITY_HOME/Trinity
 
 
 find $TRINITY_HOME -type f -name "*.bak" -print0 | xargs -0 rm -f
