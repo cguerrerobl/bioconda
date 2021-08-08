@@ -8,9 +8,11 @@ package:
 source:
   sha256: '{{sha256}}'
   url: "https://github.com/philres/ngmlr/archive/v{{ version }}.tar.gz"
+  patches:
+    - mapq.patch
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
