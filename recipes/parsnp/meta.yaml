@@ -10,8 +10,8 @@ source:
 
 build:
   # Can't find -lomp
-  skip: True  # [osx]
-  number: 1
+  skip: True #[linux]
+  number: 2
 
 requirements:
   build:
@@ -24,12 +24,12 @@ requirements:
     - llvm-openmp # [osx]
   host:
     - zlib
-    - llvm-openmp  # [osx]
     - openmp
+    - llvm-openmp # [osx]
   run:
-    - python >=3.6
-    - llvm-openmp  # [osx]
+    - python >=3.6,<3.9
     - openmp
+    - llvm-openmp # [osx]
     - harvesttools
     - fasttree
     - phipack
