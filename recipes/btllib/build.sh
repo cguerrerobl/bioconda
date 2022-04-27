@@ -1,6 +1,7 @@
 #!/bin/bash
 
-./compile
+export PATH=$PREFIX/bin:$PATH
+$PYTHON compile
 
 mkdir -p ${PREFIX}/bin/
 mkdir -p ${PREFIX}/include/
