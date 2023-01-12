@@ -21,6 +21,7 @@ requirements:
   host:
     - python  3.8  ## pymzq 18 not available for any later python version
     - pip
+    - backports.functools_lru_cache
     - cython
     - python-javabridge
     - pytest
