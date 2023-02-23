@@ -9,7 +9,7 @@ source:
   sha256: a86be109500e40a82dbbd09729b4c450fafb9a0285cf859706ba2f5d08aa5aa6
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -17,6 +17,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - zlib
+  run:
     - zlib
 
 test:
