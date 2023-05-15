@@ -1,0 +1,67 @@
+{% set name = "latch" %}
+{% set version = "0.7.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: d0e125354366cf73d08bf519aa142240437fe3c8216d52cf74512923d0d84ab3
+
+build:
+  noarch: python
+  number: 0
+  entry_points:
+    - latch=latch.cli.main:main
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - boto3 >=1.2
+    - click >=7.0
+    - docker >=5.0
+    - flaightkit ==0.2.0
+    - flaightkitplugins-pod ==0.0.1
+    - pip
+    - pyjwt >=0.2.0
+    - python
+    - requests >=2.0
+    - tqdm >=4.63.0
+    - typing-extensions ==4.0.1
+  run:
+    - boto3 >=1.2
+    - click >=7.0
+    - docker >=5.0
+    - flaightkit ==0.2.0
+    - flaightkitplugins-pod ==0.0.1
+    - pyjwt >=0.2.0
+    - python
+    - requests >=2.0
+    - tqdm >=4.63.0
+    - typing-extensions ==4.0.1
+
+test:
+  imports:
+    - latch
+    - latch.auth
+    - latch.cli
+    - latch.config
+    - latch.resources
+    - latch.services
+    - latch.services.register
+    - latch.types
+    - tests
+  commands:
+    - latch --help
+
+about:
+  home: https://latch.bio/sdk 
+  license: MIT
+  license_file: LICENSE
+  summary: Command line tool to launch + investigate workflows and data objects.
+  doc_url: https://docs.latch.bio/
+
+extra:
+  recipe-maintainers:
+    - kennyworkman 
