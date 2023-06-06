@@ -20,10 +20,10 @@ requirements:
     run:
         - python >=3.6,<=3.9
         - mafft
-        - paml
+        - paml 4.9j
         - diamond
         - mcl
-
+        - i-adhore
 
 test:
     imports:
