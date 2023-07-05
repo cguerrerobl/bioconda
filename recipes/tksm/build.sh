@@ -1,4 +1,4 @@
 #!/bin/bash
-INSTALL_PREFIX="${PREFIX}" make -j${CPU_COUNT}
+CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY" INSTALL_PREFIX="${PREFIX}" make -j${CPU_COUNT}
 mkdir -p ${PREFIX}/bin
 ./install.sh
