@@ -1,24 +1,29 @@
-{% set version = "1.1.0" %}
+{% set version = "1.1.2" %}
 
 package:
   name: tabixpp
   version: {{ version }}
 
 source:
-  url: https://github.com/ekg/tabixpp/archive/v{{version}}.tar.gz
-  sha256: 56c8f1b07190aba5e1d0b738e380e726d380f0ad8b2d0df133200b0ab1f8ed88
-  patches:
-    - shared_lib.patch
-    - pkg-config.patch
+  url: https://github.com/AndreaGuarracino/tabixpp/releases/download/v{{version}}/tabixpp-v{{version}}.tar.gz
+  sha256: 61afe8638d505e73d0426817faa37d9410ad4a21aa2a058e0fcb6ad0b28122f4
+  #patches:
+  #  - shared_lib.patch
+  #  - pkg-config.patch
 
 build:
-  number: 13
+  number: 0
 
 requirements:
   build:
-    - make
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - llvm-openmp  # [osx]
+    - cmake
+    - make
+    - libcurl
+    - zlib
+    - pkg-config
   host:
     - zlib
     - bzip2
@@ -26,8 +31,8 @@ requirements:
     - htslib
     - bc
     - samtools
-    - pkg-config #needed for MacOS build
-    
+    - libcurl
+    - pkg-config
   run:
     - zlib
     - bzip2
@@ -50,5 +55,7 @@ about:
   maintainers: jpuritz
 
 extra:
-   identifiers:
+  recipe-maintainers:
+    - AndreaGuarracino
+  identifiers:
     - biotools:tabixpp
