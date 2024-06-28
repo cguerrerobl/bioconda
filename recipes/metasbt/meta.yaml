@@ -1,4 +1,4 @@
-{% set name = "MetaSBT" %}
+{% set name = "metasbt" %}
 {% set version = "0.1.3" %}
 
 package:
@@ -14,6 +14,8 @@ build:
   noarch: python
   entry_points:
     - metasbt=metasbt.metasbt:main
+  run_exports:
+    - {{ pin_subpackage('metasbt', max_pin="x.x.x") }}
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
