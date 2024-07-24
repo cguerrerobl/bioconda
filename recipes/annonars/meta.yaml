@@ -1,4 +1,4 @@
-{% set version = "0.38.0" %}
+{% set version = "0.40.0" %}
 
 package:
   name: annonars
@@ -12,7 +12,7 @@ build:
 
 source:
   url: https://github.com/varfish-org/annonars/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 744115fa199e798760adaa7f5a6d8c7f1a4976785456e9557fd6f1cc39e78612
+  sha256: 1860e69f89935aa5d5456e55070d4c172cd4b29bdf07ad16b6b4dcf95b4ef7b2
 
 requirements:
   build:
