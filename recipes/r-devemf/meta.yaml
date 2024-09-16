@@ -1,0 +1,43 @@
+package:
+  name: r-devemf
+  version: 3.6.3
+
+source:
+  url: https://cran.r-project.org/src/contrib/Archive/devEMF/devEMF_3.6-3.tar.gz
+  sha256: a79fe5383cfca7fdaa6f208cafea439208508794d311d4c0a37eb45a00b8caff
+
+build:
+  number: 0
+  run_exports: '{{ pin_compatible("r-devEMF", max_pin="x.x") }}'
+  rpaths:
+    - lib/R/lib
+    - lib
+  noarch: generic
+
+requirements:
+  host:
+    - r-base <4.2.0a0
+    - r-devtools
+    - r-tidyverse
+
+  run:
+    - r-base <4.2.0a0
+    - r-devtools
+    - r-tidyverse
+
+test:
+  commands:
+    - $R -e "library(devEMF)"
+
+about:
+  home: https://github.com/plfjohnson/devEMF
+  license: GPL3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  summary:  R package to produce EMF and EMF+ vector graphics 
+
+extra:
+  additional-platforms:
+    -linux-aarch64
+  recipe-maintainers:
+    - Fabian-Boehm
