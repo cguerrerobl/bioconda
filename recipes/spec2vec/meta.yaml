@@ -11,20 +11,19 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
+  run_exports:
+    - {{ pin_subpackage("spec2vec", max_pin="x.x") }}
 
 requirements:
   host:
     - python >=3.7
     - pip
   run:
-    - python >=3.7
-    - gensim >=4.0.0
-    - matchms >=0.11.0
-    - numba >=0.51
-    - numpy
-    - fuzzytm
+    - python >=3.10
+    - gensim >=4.3.3
+    - matchms >=0.26.4
     - tqdm
 
 test:
@@ -43,5 +42,5 @@ about:
 
 extra:
   recipe-maintainers:
-    - bgruening
     - hechth
+    - bgruening
